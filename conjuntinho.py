@@ -7,10 +7,15 @@ class Conjunto:
                 self.elementos.append(i)
 
     def imprimir(self):
-        conjunto = self.nome + " = {" + f"{self.elementos}" + \
-            "}"
-        # verificar se é do tipo objeto, se for chamar o metodo imprimir
-        conjunto = conjunto.replace("[", "").replace("]", "").replace("'", "")
+        conjunto = self.nome + " = {"
+        for elemento in self.elementos:
+            if type(elemento) != Conjunto:
+                conjunto += str(elemento) + ","
+            else:
+                conjunto += "{" + str(elemento.elementos) + "},"
+
+        conjunto = conjunto.replace(
+            "[", "").replace("]", "").replace("'", "")[0:-1] + "}"
 
         print(conjunto)
 
