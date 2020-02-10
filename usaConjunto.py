@@ -1,6 +1,6 @@
-import conjuntinho
+import Conjuntos
 
-Conjunto = conjuntinho.Conjunto
+Conjunto = Conjuntos.Conjunto
 
 conjunto_numeros = Conjunto("B", 1, 2, 3)
 conjunto_letras = Conjunto("C", 'd', "e", "g")

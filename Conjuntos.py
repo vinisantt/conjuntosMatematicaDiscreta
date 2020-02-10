@@ -9,7 +9,7 @@ class Conjunto:
     def imprimir(self):
         conjunto = self.nome + " = {"
         for elemento in self.elementos:
-            if type(elemento) != Conjunto:
+            if type(elemento) == str:
                 conjunto += str(elemento) + ","
             else:
                 conjunto += "{" + str(elemento.elementos) + "},"
