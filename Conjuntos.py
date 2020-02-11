@@ -23,5 +23,18 @@ class Conjunto:
         if elemento not in self.elementos:
             self.elementos.append(elemento)
 
-    def tamanho(self):
+    def tamanho(self) -> int:
         return len(self.elementos)
+
+    # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
+    # separados por ";"
+
+    def separa_arq(self, arquivo) -> list:
+        conjuntos = arquivo.split(";")
+        return conjuntos
+
+    def le_arq(self, arquivo) -> str:
+        arq = open(arquivo, 'r')
+        arq = self.separa_arq(arq.read())
+
+        return arq

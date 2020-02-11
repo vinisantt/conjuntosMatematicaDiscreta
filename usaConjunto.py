@@ -7,6 +7,6 @@ conjunto_letras = Conjunto("C", 'd', "e", "g")
 conjunto_mesclado = Conjunto(
     "A", conjunto_numeros, "a", "c", conjunto_letras)
 
-conjunto_mesclado.imprimir()
+a = conjunto_mesclado.le_arq('teste.csv')
 
-print(conjunto_mesclado.tamanho())
+print(a)
