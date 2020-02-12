@@ -34,7 +34,7 @@ class Conjunto:
         return conjuntos
 
     def le_arq(self, arquivo) -> str:
-        arq = open(arquivo, 'r')
-        arq = self.separa_arq(arq.read())
+        with open(arquivo, 'r') as arq:
+            arq = self.separa_arq(arq.read())
 
         return arq
