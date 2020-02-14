@@ -30,7 +30,7 @@ class Conjunto:
         return elemento in self.elementos
     
     def contem(self, *cg):
-        if tamanho() < cg:
+        if tamanho() < len(cg):
             return False
         else:
             for elemento in self.elementos:
