@@ -28,6 +28,15 @@ class Conjunto:
 
     def pertence(self, elemento):
         return elemento in self.elementos
+    
+    def contem(self, *cg):
+        if tamanho() < cg:
+            return False
+        else:
+            for elemento in self.elementos:
+                if elemento not in cg:
+                    return False 
+            return True
 
     # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
     # separados por ";"
