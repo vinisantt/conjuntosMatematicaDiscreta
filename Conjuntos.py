@@ -32,13 +32,13 @@ class Conjunto:
     def pertence(self, elemento):
         return elemento in self.elementos
     
-    def contem(self, *cg):
-        if tamanho() < len(cg):
+    def contem(self, cg):
+        if self.tamanho() < cg.tamanho():
             return False
         else:
-            for elemento in self.elementos:
-                if elemento not in cg:
-                    return False 
+            for elemento in cg.elementos:
+                if elemento not in self.elementos:
+                    return False
             return True
 
     # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
