@@ -41,6 +41,11 @@ class Conjunto:
                     return False
             return True
 
+    def contemProp(self, cg):
+        if self.contem(cg):
+            return self.tamanho() > cg.tamanho()            
+        return False
+
     # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
     # separados por ";"
     '''def separa_arq(self, arquivo) -> list:
