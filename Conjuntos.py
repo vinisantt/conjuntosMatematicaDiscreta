@@ -29,10 +29,12 @@ class Conjunto:
     def tamanho(self) -> int:
         return len(self.elementos)
 
+    def pertence(self, elemento):
+        return elemento in self.elementos
+
     # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
     # separados por ";"
-
-    def separa_arq(self, arquivo) -> list:
+    '''def separa_arq(self, arquivo) -> list:
         conjuntos = arquivo.split(";")
         return conjuntos
 
@@ -41,3 +43,4 @@ class Conjunto:
             arq = self.separa_arq(arq.read())
 
         return arq
+    '''
