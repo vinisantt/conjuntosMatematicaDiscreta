@@ -1,6 +1,7 @@
 import Conjuntos
 
-Conjunto = Conjuntos.Conjunto
+c = Conjuntos.Conjunto('teste')
+d = Conjuntos.Conjunto('in')
 
 conjunto_numeros1 = Conjunto("B", 1, 2, 3)
 conjunto_numeros = Conjunto("B", 1, 2, 3)
