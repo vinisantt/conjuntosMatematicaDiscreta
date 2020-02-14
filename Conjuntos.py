@@ -5,7 +5,7 @@ class Conjunto:
         for i in elementos:
             if i not in self.elementos:
                 self.elementos.append(i)
-
+ 
     def imprimir(self):
         conjunto = self.nome + " = {"
         for elemento in self.elementos:
