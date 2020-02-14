@@ -14,8 +14,11 @@ class Conjunto:
             else:
                 conjunto += "{" + str(elemento.elementos) + "},"
 
+        if conjunto[-1] == ',':
+            conjunto = conjunto[:-1]
+
         conjunto = conjunto.replace(
-            "[", "").replace("]", "").replace("'", "")[0:-1] + "}"
+            "[", "").replace("]", "").replace("'", "") + "}"
 
         print(conjunto)
 
