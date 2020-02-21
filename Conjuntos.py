@@ -57,6 +57,7 @@ class Conjunto:
             else:
                 formulaLatex += i
         print("${}$".format(formulaLatex))
+        return formulaLatex
 
 
 

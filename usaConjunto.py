@@ -1,4 +1,5 @@
 import Conjuntos
+from pylatex import Document, Section
 
 Conjunto = Conjuntos.Conjunto
 
@@ -9,4 +10,11 @@ conjunto_mesclado = Conjunto(
     "A", conjunto_numeros, "a", "c", conjunto_letras)
 
 conjunto_mesclado.imprimirLatex()
+
+doc = Document('Latex-Expressao')
+
+with doc.create(Section('Expressão:')):
+    doc.append(conjunto_mesclado.imprimirLatex())
+
+doc.generate_tex()
 
