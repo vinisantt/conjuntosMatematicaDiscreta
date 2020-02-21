@@ -56,7 +56,7 @@ class Conjunto:
                 formulaLatex += expressoes[i]
             else:
                 formulaLatex += i
-        print("${}$".format(formulaLatex))
+        print(f"${formulaLatex}$")
 
 
 
