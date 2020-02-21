@@ -6,7 +6,7 @@ class Conjunto:
             if i not in self.elementos:
                 self.elementos.append(i)
  
-    def imprimir(self):
+    def imprimir(self) -> str:
         conjunto = self.nome + " = {"
         for elemento in self.elementos:
             if type(elemento) == str:
@@ -21,6 +21,7 @@ class Conjunto:
             "[", "").replace("]", "").replace("'", "") + "}"
 
         print(conjunto)
+        return conjunto
 
     def inserir(self, elemento):
         if elemento not in self.elementos:
@@ -32,7 +33,7 @@ class Conjunto:
     def pertence(self, elemento):
         return elemento in self.elementos
     
-    def contem(self, cg):
+    def contem(self, cg) -> bool:
         if self.tamanho() < cg.tamanho():
             return False
         else:
@@ -41,10 +42,25 @@ class Conjunto:
                     return False
             return True
 
-    def contemProp(self, cg):
+    def contemProp(self, cg) -> bool:
         if self.contem(cg):
             return self.tamanho() > cg.tamanho()            
         return False
+
+    def imprimirLatex(self):
+        conjunto = self.imprimir()
+        expressoes = {'{':'\\{','}':'\\}'}
+        formulaLatex = ''
+        for i in conjunto:
+            if i in expressoes:
+                formulaLatex += expressoes[i]
+            else:
+                formulaLatex += i
+        print(formulaLatex)
+
+
+
+
 
     # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
     # separados por ";"
