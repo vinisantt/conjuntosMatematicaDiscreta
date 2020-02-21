@@ -46,7 +46,7 @@ class Conjunto:
         if self.contem(cg):
             return self.tamanho() > cg.tamanho()            
         return False
-
+    
     def imprimirLatex(self):
         conjunto = self.imprimir()
         expressoes = {'{':'\\{','}':'\\}'}
@@ -56,7 +56,7 @@ class Conjunto:
                 formulaLatex += expressoes[i]
             else:
                 formulaLatex += i
-        print(formulaLatex)
+        print("${}$".format(formulaLatex))
 
 
 
