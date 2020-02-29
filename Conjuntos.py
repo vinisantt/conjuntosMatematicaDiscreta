@@ -65,21 +65,28 @@ class Conjunto:
     def estaVazio(self):
         return self.tamanho() == 0
 
+    def igual(self, conjunto):
+        if self.tamanho() == conjunto.tamanho():
+            return self.contem(conjunto)
+        return False
+
     def uniao(self, conjunto):
         unido = Conjunto(f"{self.nome} U {conjunto.nome}")
 
-        if unido.nome not in operacoes and unido.nome[::-1] not in operacoes:
+        if self.igual(conjunto):
+            unido.elementos = self.elementos
+            operacoes[f"{self.nome} U {conjunto.nome}"] = unido
+
+        elif unido.nome not in operacoes and unido.nome[::-1] not in operacoes:
             if not conjunto.estaVazio() and not self.estaVazio():
                 if conjunto.tamanho() > self.tamanho():
                     unido.elementos = conjunto.elementos
-                    for element in self.elementos:
-                        unido.inserir(element)
-
+                    for elemento in self.elementos:
+                        unido.inserir(elemento)
                 else:
                     unido.elementos = self.elementos
-                    for element in conjunto.elementos:
-                        unido.inserir(element)
-
+                    for elemento in conjunto.elementos:
+                        unido.inserir(elemento)
             operacoes[f"{self.nome} U {conjunto.nome}"] = unido
 
         try:
