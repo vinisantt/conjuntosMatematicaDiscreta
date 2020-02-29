@@ -9,12 +9,8 @@ conjunto_letras = Conjunto("C", 'd', "e", "g")
 conjunto_mesclado = Conjunto(
     "A", conjunto_numeros, "a", "c", conjunto_letras)
 
-conjunto_mesclado.imprimirLatex()
+unido = conjunto_letras.uniao(conjunto_numeros)
+unido3 = conjunto_numeros.uniao(conjunto_letras)
 
-doc = Document('Latex-Expressao')
 
-with doc.create(Section('Expressão:')):
-    doc.append(conjunto_mesclado.imprimirLatex())
-
-doc.generate_tex()
-
+unido3.imprimir()
