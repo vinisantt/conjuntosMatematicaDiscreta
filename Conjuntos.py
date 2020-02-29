@@ -81,8 +81,7 @@ class Conjunto:
                         unido.inserir(element)
 
             operacoes[f"{self.nome} U {conjunto.nome}"] = unido
-            print("teste")
-        print(operacoes)
+
         try:
             return operacoes[unido.nome]
         except KeyError:
