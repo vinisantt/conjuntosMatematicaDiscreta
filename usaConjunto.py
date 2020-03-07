@@ -1,15 +1,12 @@
-import Conjuntos
 from pylatex import Document, Section
+import Conjuntos
 
 Conjunto = Conjuntos.Conjunto
 
-conjunto_numeros1 = Conjunto("D", 1, 2, 3)
-conjunto_numeros = Conjunto("B", 2, 1, 3)
-conjunto_letras = Conjunto("C", 'd', "e", "g")
-conjunto_mesclado = Conjunto(
-    "A", conjunto_numeros, "a", "c", conjunto_letras)
+A = Conjunto("A", 1, 2, 3)
+B = Conjunto("B", 4, 5, 6)
 
-unido3 = conjunto_numeros1.uniao(conjunto_numeros)
-
-
-unido3.imprimir()
+AUB = A.uniao(B)
+B.inserir(7)
+AUB = A.uniao(B)
+B.inserir(10)

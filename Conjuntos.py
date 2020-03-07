@@ -1,4 +1,13 @@
-operacoes = {}
+# Criar listinha de conjuntos // classe que controla tudo que vai acontecer
+# Ex: superClass para controlar quem faz o que, um gerente
+# class superClass:
+#   criarConjunto()
+#   listaDeConjuntos = []
+#   operacoesFeitas = {}
+
+operacoes = {}  # Operações feitas são guardas aqui, para motivos de otimização
+
+# Deixar a classe conjunto como model, e as funções na classe Deus
 
 
 class Conjunto:
@@ -26,9 +35,24 @@ class Conjunto:
         print(conjunto)
         return conjunto
 
-    def inserir(self, elemento):
-        if elemento not in self.elementos:
-            self.elementos.append(elemento)
+    def atualizaOperacoes(self, nome):
+        remove = []
+        for operacao in operacoes:
+            if nome in operacao:
+                remove.append(operacao)
+
+        for i in remove:
+            operacoes.pop(i)
+        print(operacoes)
+
+    def inserir(self, elemento, o=False):
+        if o == False:
+            if elemento not in self.elementos:
+                self.elementos.append(elemento)
+                self.atualizaOperacoes(self.nome)
+        else:
+            if elemento not in self.elementos:
+                self.elementos.append(elemento)
 
     def tamanho(self) -> int:
         return len(self.elementos)
@@ -82,11 +106,11 @@ class Conjunto:
                 if conjunto.tamanho() > self.tamanho():
                     unido.elementos = conjunto.elementos
                     for elemento in self.elementos:
-                        unido.inserir(elemento)
+                        unido.inserir(elemento, True)
                 else:
                     unido.elementos = self.elementos
                     for elemento in conjunto.elementos:
-                        unido.inserir(elemento)
+                        unido.inserir(elemento, True)
             operacoes[f"{self.nome} U {conjunto.nome}"] = unido
 
         try:
