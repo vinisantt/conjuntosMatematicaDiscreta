@@ -1,22 +1,14 @@
 # Criar listinha de conjuntos // classe que controla tudo que vai acontecer
-# Ex: superClass para controlar quem faz o que, um gerente
-# class superClass:
-#   criarConjunto()
-#   listaDeConjuntos = []
-#   operacoesFeitas = {}
-
-operacoes = {}  # Operações feitas são guardas aqui, para motivos de otimização
-
 # Deixar a classe conjunto como model, e as funções na classe Deus
 
 
-class Conjunto:
-    def __init__(self, nome, *elementos):
-        self.nome = nome
-        self.elementos = []
-        for i in elementos:
-            if i not in self.elementos:
-                self.elementos.append(i)
+# Ex: superClass para controlar quem faz o que, um gerente
+class managerClass:
+
+    listaDeConjuntos = []
+    operacoesFeitas = {}
+
+    def criarConjunto(self, nome, *elementos)
 
     def imprimir(self) -> str:
         conjunto = self.nome + " = {"
@@ -35,21 +27,21 @@ class Conjunto:
         print(conjunto)
         return conjunto
 
-    def atualizaOperacoes(self, nome):
+    def atualizaoperacoesFeitas(self, nome):
         remove = []
-        for operacao in operacoes:
+        for operacao in operacoesFeitas:
             if nome in operacao:
                 remove.append(operacao)
 
         for i in remove:
-            operacoes.pop(i)
-        print(operacoes)
+            operacoesFeitas.pop(i)
+        print(operacoesFeitas)
 
     def inserir(self, elemento, o=False):
         if o == False:
             if elemento not in self.elementos:
                 self.elementos.append(elemento)
-                self.atualizaOperacoes(self.nome)
+                self.atualizaoperacoesFeitas(self.nome)
         else:
             if elemento not in self.elementos:
                 self.elementos.append(elemento)
@@ -99,9 +91,9 @@ class Conjunto:
 
         if self.igual(conjunto):
             unido.elementos = self.elementos
-            operacoes[f"{self.nome} U {conjunto.nome}"] = unido
+            operacoesFeitas[f"{self.nome} U {conjunto.nome}"] = unido
 
-        elif unido.nome not in operacoes and unido.nome[::-1] not in operacoes:
+        elif unido.nome not in operacoesFeitas and unido.nome[::-1] not in operacoesFeitas:
             if not conjunto.estaVazio() and not self.estaVazio():
                 if conjunto.tamanho() > self.tamanho():
                     unido.elementos = conjunto.elementos
@@ -111,16 +103,16 @@ class Conjunto:
                     unido.elementos = self.elementos
                     for elemento in conjunto.elementos:
                         unido.inserir(elemento, True)
-            operacoes[f"{self.nome} U {conjunto.nome}"] = unido
+            operacoesFeitas[f"{self.nome} U {conjunto.nome}"] = unido
 
         try:
-            return operacoes[unido.nome]
+            return operacoesFeitas[unido.nome]
         except KeyError:
-            return operacoes[unido.nome[::-1]]
+            return operacoesFeitas[unido.nome[::-1]]
 
-    # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
-    # separados por ";"
-    '''def separa_arq(self, arquivo) -> list:
+        # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
+        # separados por ";"
+        '''def separa_arq(self, arquivo) -> list:
         conjuntos = arquivo.split(";")
         return conjuntos
 
