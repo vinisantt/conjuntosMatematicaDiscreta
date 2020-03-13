@@ -4,16 +4,18 @@
 
 import Conjunto
 
+
 class ClasseDeus:
 
     listaDeConjuntos = []
     operacoesFeitas = {}
 
     def criarConjunto(self, nome, *elementos):
-        conjunto = Conjunto.Conjunto(nome,elementos)
-        return conjunto 
+        print(elementos)
+        conjunto = Conjunto.Conjunto(nome, elementos)
+        return conjunto
 
-    def imprimir(self,conj) -> str:
+    def imprimir(self, conj) -> str:
         conjunto = conj.nome + " = {"
         for elemento in conj.elementos:
             if type(elemento) == str or type(elemento) == int:
@@ -40,7 +42,7 @@ class ClasseDeus:
             self.operacoesFeitas.pop(i)
         print(self.operacoesFeitas)
 
-    def inserir(self, conjunto ,elemento, o=False):
+    def inserir(self, conjunto, elemento, o=False):
         if o == False:
             if elemento not in conjunto.elementos:
                 conjunto.elementos.append(elemento)
@@ -49,10 +51,10 @@ class ClasseDeus:
             if elemento not in conjunto.elementos:
                 conjunto.elementos.append(elemento)
 
-    def tamanho(self,conjunto) -> int:
+    def tamanho(self, conjunto) -> int:
         return len(conjunto.elementos)
 
-    def pertence(self, conjunto,elemento):
+    def pertence(self, conjunto, elemento):
         return elemento in conjunto.elementos
 
     def contem(self, conjunto, cg) -> bool:
@@ -64,12 +66,12 @@ class ClasseDeus:
                     return False
             return True
 
-    def contemProp(self, conjunto ,cg) -> bool:
+    def contemProp(self, conjunto, cg) -> bool:
         if conjunto.contem(cg):
             return conjunto.tamanho() > cg.tamanho()
         return False
 
-    def imprimirLatex(self,conjunto):
+    def imprimirLatex(self, conjunto):
         formula = conjunto.imprimir()
         expressoes = {'{': '\\{', '}': '\\}'}
         formulaLatex = ''
@@ -81,10 +83,10 @@ class ClasseDeus:
         print(f"${formulaLatex}$")
         return formulaLatex
 
-    def estaVazio(self,conjunto):
+    def estaVazio(self, conjunto):
         return conjunto.tamanho() == 0
 
-    def igual(self, conjunto1 ,conjunto2):
+    def igual(self, conjunto1, conjunto2):
         if conjunto1.tamanho() == conjunto2.tamanho():
             return conjunto1.contem(conjunto2)
         return False
