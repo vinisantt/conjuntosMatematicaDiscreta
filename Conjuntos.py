@@ -5,7 +5,7 @@
 #   listaDeConjuntos = []
 #   operacoesFeitas = {}
 
-operacoes = {}  # Operações feitas são guardas aqui, para motivos de otimização
+operacoes = {}  # Operações feitas são guardadas aqui, para motivos de otimização
 
 # Deixar a classe conjunto como model, e as funções na classe Deus
 
@@ -18,7 +18,7 @@ class Conjunto:
             if i not in self.elementos:
                 self.elementos.append(i)
 
-    def imprimir(self) -> str:
+    def imprimir(self, operacao=False) -> str:
         conjunto = self.nome + " = {"
         for elemento in self.elementos:
             if type(elemento) == str or type(elemento) == int:
@@ -32,8 +32,9 @@ class Conjunto:
         conjunto = conjunto.replace(
             "[", "").replace("]", "").replace("'", "") + "}"
 
+        if operacao:
+            return conjunto
         print(conjunto)
-        return conjunto
 
     def atualizaOperacoes(self, nome):
         remove = []
@@ -43,7 +44,6 @@ class Conjunto:
 
         for i in remove:
             operacoes.pop(i)
-        print(operacoes)
 
     def inserir(self, elemento, o=False):
         if o == False:
@@ -75,7 +75,7 @@ class Conjunto:
         return False
 
     def imprimirLatex(self):
-        conjunto = self.imprimir()
+        conjunto = self.imprimir(True)
         expressoes = {'{': '\\{', '}': '\\}'}
         formulaLatex = ''
         for i in conjunto:
@@ -95,38 +95,51 @@ class Conjunto:
         return False
 
     def uniao(self, conjunto):
-        unido = Conjunto(f"{self.nome} U {conjunto.nome}")
+        uniao = Conjunto(f"{self.nome} ∪ {conjunto.nome}")
 
         if self.igual(conjunto):
-            unido.elementos = self.elementos
-            operacoes[f"{self.nome} U {conjunto.nome}"] = unido
+            uniao.elementos = self.elementos
+            operacoes[f"{self.nome} ∪ {conjunto.nome}"] = uniao
 
-        elif unido.nome not in operacoes and unido.nome[::-1] not in operacoes:
+        elif uniao.nome not in operacoes and uniao.nome[::-1] not in operacoes:
             if not conjunto.estaVazio() and not self.estaVazio():
                 if conjunto.tamanho() > self.tamanho():
-                    unido.elementos = conjunto.elementos
+                    uniao.elementos = conjunto.elementos
                     for elemento in self.elementos:
-                        unido.inserir(elemento, True)
+                        uniao.inserir(elemento, True)
                 else:
-                    unido.elementos = self.elementos
+                    uniao.elementos = self.elementos
                     for elemento in conjunto.elementos:
-                        unido.inserir(elemento, True)
-            operacoes[f"{self.nome} U {conjunto.nome}"] = unido
+                        uniao.inserir(elemento, True)
+            else:
+                if conjunto.estaVazio() and not self.estaVazio():
+                    uniao.elementos = self.elementos
+                else:
+                    uniao.elementos = conjunto.elementos
+
+            operacoes[f"{self.nome} ∪ {conjunto.nome}"] = uniao
 
         try:
-            return operacoes[unido.nome]
+            return operacoes[uniao.nome]
         except KeyError:
-            return operacoes[unido.nome[::-1]]
+            return operacoes[uniao.nome[::-1]]
 
-    # n sei como é pra ta no arquivo, mas fui baseado em que os conjuntos sejam
-    # separados por ";"
-    '''def separa_arq(self, arquivo) -> list:
-        conjuntos = arquivo.split(";")
-        return conjuntos
+    def intersecao(self,conjunto):
+        intersecao = Conjunto(f"{self.nome} ∩ {conjunto.nome}")
 
-    def le_arq(self, arquivo) -> str:
-        with open(arquivo, 'r') as arq:
-            arq = self.separa_arq(arq.read())
+        if self.igual(conjunto):
+            intersecao.elementos = self.elementos
+            operacoes[f"{self.nome} ∩ {conjunto.nome}"] = intersecao
+        
+        elif intersecao.nome not in operacoes and intersecao.nome[::-1] not in operacoes:
+            if not conjunto.estaVazio() and not self.estaVazio():
+                for elemento in conjunto.elementos:
+                    if self.pertence(elemento):
+                        intersecao.inserir(elemento)
+                operacoes[f"{self.nome} ∩ {conjunto.nome}"] = intersecao
+        try:
+            return operacoes[intersecao.nome]
+        except KeyError:
+            return operacoes[intersecao.nome[::-1]]
 
-        return arq
-    '''
+                
