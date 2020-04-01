@@ -1,4 +1,4 @@
-from pylatex import Document, Section
+#from pylatex import Document, Section
 import Conjuntos
 
 Conjunto = Conjuntos.Conjunto
@@ -11,7 +11,7 @@ AIB = A.intersecao(B)
 AIB.imprimir()
 
 X = Conjunto("X", 5,4, 3)
-Z = Conjunto("Z", 1, 4, 6)
+Z = Conjunto("Z", 1, 4, 6, {})
 
 Y = X.diferenca(Z)
 

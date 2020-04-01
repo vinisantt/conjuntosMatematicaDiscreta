@@ -24,7 +24,10 @@ class Conjunto:
             if type(elemento) == str or type(elemento) == int:
                 conjunto += str(elemento) + ","
             else:
-                conjunto += "{" + str(elemento.elementos) + "},"
+                try:
+                    conjunto += "{" + str(elemento.elementos) + "},"
+                except AttributeError:
+                    conjunto += "{},"
 
         if conjunto[-1] == ',':
             conjunto = conjunto[:-1]
