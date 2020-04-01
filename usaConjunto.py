@@ -9,3 +9,10 @@ B = Conjunto("B", 4, 5, 6)
 AIB = A.intersecao(B)
 
 AIB.imprimir()
+
+X = Conjunto("X", 5,4, 3)
+Z = Conjunto("Z", 1, 4, 6)
+
+Y = X.diferenca(Z)
+
+Y.imprimir()

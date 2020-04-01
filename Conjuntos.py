@@ -142,4 +142,16 @@ class Conjunto:
         except KeyError:
             return operacoes[intersecao.nome[::-1]]
 
+    def diferenca(self, conjunto):
+        #local variable to save the diff
+        diff = Conjunto(f"{self.nome} - {conjunto.nome}")
+        #check if one of them is empty them proceeds
+        if(self.tamanho()>0 and conjunto.tamanho()>0):
+            #run through conjunto then compare if ele is not in main conjunto.
+            for ele in conjunto.elementos:
+                if ele not in self.elementos:
+                    #Insert in the new conjunto
+                    diff.inserir(ele)
+        return diff
+
                 
