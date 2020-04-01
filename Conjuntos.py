@@ -27,7 +27,19 @@ class Conjunto:
                 try:
                     conjunto += "{" + str(elemento.elementos) + "},"
                 except AttributeError:
-                    conjunto += "{},"
+                    if len(elemento)>0:
+                        complementar = "{"
+                        #necessario conversao de tipo
+                        lista = list(elemento)
+                        for ele in lista:
+                            #caso n seja o ultimo
+                            if ele != lista[-1]:
+                                complementar += str(ele) + ","
+                            else:
+                                complementar += str(ele) + "},"
+                        conjunto += complementar
+                    else:
+                        conjunto += "{},"
 
         if conjunto[-1] == ',':
             conjunto = conjunto[:-1]
@@ -49,6 +61,7 @@ class Conjunto:
             operacoes.pop(i)
 
     def inserir(self, elemento, o=False):
+        print(type(elemento))
         if o == False:
             if elemento not in self.elementos:
                 self.elementos.append(elemento)
