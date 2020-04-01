@@ -61,7 +61,6 @@ class Conjunto:
             operacoes.pop(i)
 
     def inserir(self, elemento, o=False):
-        print(type(elemento))
         if o == False:
             if elemento not in self.elementos:
                 self.elementos.append(elemento)
@@ -169,5 +168,13 @@ class Conjunto:
                     #Insert in the new conjunto
                     diff.inserir(ele)
         return diff
+    
+    def complementar(self, conjunto):
+        if conjunto.contem(self):
+            comp = self.diferenca(conjunto)
+            comp.nome = f"{self.nome}^{conjunto.nome}";
+            return comp
+        else:
+            return Conjunto(f"{self.nome}^{conjunto.nome}")
 
                 
