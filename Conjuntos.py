@@ -63,8 +63,8 @@ class Conjunto:
         for i in remove:
             operacoes.pop(i)
 
-    def inserir(self, elemento, o=False):
-        if o == False:
+    def inserir(self, elemento, operacao=False):
+        if operacao == False:
             if elemento not in self.elementos:
                 self.elementos.append(elemento)
                 self.atualizaOperacoes(self.nome)
@@ -78,18 +78,18 @@ class Conjunto:
     def pertence(self, elemento):
         return elemento in self.elementos
 
-    def contem(self, cg) -> bool:
-        if self.tamanho() < cg.tamanho():
+    def contem(self, conjunto) -> bool:
+        if self.tamanho() < conjunto.tamanho():
             return False
         else:
-            for elemento in cg.elementos:
+            for elemento in conjunto.elementos:
                 if elemento not in self.elementos:
                     return False
             return True
 
-    def contemProp(self, cg) -> bool:
-        if self.contem(cg):
-            return self.tamanho() > cg.tamanho()
+    def contemProp(self, conjunto) -> bool:
+        if self.contem(conjunto):
+            return self.tamanho() > conjunto.tamanho()
         return False
 
     def imprimirLatex(self):
@@ -173,6 +173,7 @@ class Conjunto:
         return diff
 
     def complementar(self, conjunto):
+
         if conjunto.contem(self):
             comp = self.diferenca(conjunto)
             comp.nome = f"{self.nome}^{conjunto.nome}"
@@ -181,6 +182,12 @@ class Conjunto:
             return Conjunto(f"{self.nome}^{conjunto.nome}")
 
     def conjuntoDasPartes(self):
+        """
+        Retorna as combinações possíveis dos elementos de um conjunto.
+
+        - 
+
+        """
 
         elementos = self.elementos
 
@@ -194,10 +201,12 @@ class Conjunto:
                     ultimo = str(x)[-2]
                     if ultimo == ',':
                         if "{" not in str(x) or "}" not in str(x):
-                            print(str(x).replace(",", ""))
+                            print(str(x).replace(",", "").replace(
+                                "(", "{").replace(")", "}"))
                         else:
-                            print(str(x)[:-2] + str(x)[-1:])
+                            print((str(x)[:-2] + str(x)[-1:]
+                                   ).replace("(", "{").replace(")", "}"))
                     else:
-                        print(x)
+                        print(str(x).replace("(", "{").replace(")", "}"))
                 except IndexError:
                     pass
