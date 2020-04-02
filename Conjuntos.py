@@ -5,6 +5,9 @@
 #   listaDeConjuntos = []
 #   operacoesFeitas = {}
 
+import itertools
+from itertools import combinations
+
 operacoes = {}  # Operações feitas são guardadas aqui, para motivos de otimização
 
 # Deixar a classe conjunto como model, e as funções na classe Deus
@@ -27,12 +30,12 @@ class Conjunto:
                 try:
                     conjunto += "{" + str(elemento.elementos) + "},"
                 except AttributeError:
-                    if len(elemento)>0:
+                    if len(elemento) > 0:
                         complementar = "{"
-                        #necessario conversao de tipo
+                        # necessario conversao de tipo
                         lista = list(elemento)
                         for ele in lista:
-                            #caso n seja o ultimo
+                            # caso n seja o ultimo
                             if ele != lista[-1]:
                                 complementar += str(ele) + ","
                             else:
@@ -139,13 +142,13 @@ class Conjunto:
         except KeyError:
             return operacoes[uniao.nome[::-1]]
 
-    def intersecao(self,conjunto):
+    def intersecao(self, conjunto):
         intersecao = Conjunto(f"{self.nome} ∩ {conjunto.nome}")
 
         if self.igual(conjunto):
             intersecao.elementos = self.elementos
             operacoes[f"{self.nome} ∩ {conjunto.nome}"] = intersecao
-        
+
         elif intersecao.nome not in operacoes and intersecao.nome[::-1] not in operacoes:
             if not conjunto.estaVazio() and not self.estaVazio():
                 for elemento in conjunto.elementos:
@@ -158,23 +161,43 @@ class Conjunto:
             return operacoes[intersecao.nome[::-1]]
 
     def diferenca(self, conjunto):
-        #local variable to save the diff
+        # local variable to save the diff
         diff = Conjunto(f"{self.nome} - {conjunto.nome}")
-        #check if one of them is empty them proceeds
-        if(self.tamanho()>0 and conjunto.tamanho()>0):
-            #run through conjunto then compare if ele is not in main conjunto.
+        # check if one of them is empty them proceeds
+        if(self.tamanho() > 0 and conjunto.tamanho() > 0):
+            # run through conjunto then compare if ele is not in main conjunto.
             for ele in conjunto.elementos:
                 if ele not in self.elementos:
-                    #Insert in the new conjunto
+                    # Insert in the new conjunto
                     diff.inserir(ele)
         return diff
-    
+
     def complementar(self, conjunto):
         if conjunto.contem(self):
             comp = self.diferenca(conjunto)
-            comp.nome = f"{self.nome}^{conjunto.nome}";
+            comp.nome = f"{self.nome}^{conjunto.nome}"
             return comp
         else:
             return Conjunto(f"{self.nome}^{conjunto.nome}")
 
-                
+    def conjuntoDasPartes(self):
+
+        elementos = self.elementos
+
+        # combinacoes = sum([list(map(list, combinations(elementos, i)))
+        #                    for i in range(len(elementos) + 1)], [])
+
+        for i in range(0, len(elementos)+1):
+            linha = list(itertools.combinations(elementos, i))
+            for x in linha:
+                try:
+                    ultimo = str(x)[-2]
+                    if ultimo == ',':
+                        if "{" not in str(x) or "}" not in str(x):
+                            print(str(x).replace(",", ""))
+                        else:
+                            print(str(x)[:-2] + str(x)[-1:])
+                    else:
+                        print(x)
+                except IndexError:
+                    pass
