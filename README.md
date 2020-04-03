@@ -193,7 +193,7 @@ X.conjuntoDasPartes()
 ```
 
 ## Integrantes:
-- Jonhtan Mota Dos Reis `GitHub - [jonhtan](https://github.com/jonhtan)`
-- João Paulo Oliveira e Silva `GitHub - https://github.com/jpos15`
-- Thiago Felipe Schuch `GitHub - https://github.com/ThigSchuch`
-- Vinicius Dias Dos Santos `GitHub - https://github.com/vinisantt`
+- Jonhtan Mota Dos Reis - [jonhtan](https://github.com/jonhtan)
+- João Paulo Oliveira e Silva - [jpos15](https://github.com/jpos15)
+- Thiago Felipe Schuch - [ThigSchuch](https://github.com/ThigSchuch)
+- Vinicius Dias Dos Santos - [vinisantt](https://github.com/vinisantt)
