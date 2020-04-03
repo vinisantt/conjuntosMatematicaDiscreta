@@ -113,6 +113,21 @@ class Conjunto:
         return False
 
     def uniao(self, conjunto):
+        """
+        Une dois conjuntos, retornando um novo conjunto contendo os elementos de ambos.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+        - B = Conjunto("B", 4, 5, 6) 
+
+        - A.uniao(B)
+
+        Saída:
+
+        - Conjunto("A U B", 1, 2, 3, 4, 5, 6)
+
+        """
         uniao = Conjunto(f"{self.nome} ∪ {conjunto.nome}")
 
         if self.igual(conjunto):
@@ -161,16 +176,28 @@ class Conjunto:
             return operacoes[intersecao.nome[::-1]]
 
     def diferenca(self, conjunto):
-        # local variable to save the diff
-        diff = Conjunto(f"{self.nome} - {conjunto.nome}")
-        # check if one of them is empty them proceeds
+        """
+        Realiza a diferença entre dois conjuntos, retornando um novo conjunto com os elementos resultantes da diferença.
+
+        Exemplo:
+
+        - X = Conjunto("X", 4, 5)
+        - Y = Conjunto("Y", 5, 6)
+
+        - X.diferenca(Y)
+
+        Saída:
+
+        - Conjunto("X - Y", 4)
+
+        """
+
+        diferenca = Conjunto(f"{self.nome} - {conjunto.nome}")
         if(self.tamanho() > 0 and conjunto.tamanho() > 0):
-            # run through conjunto then compare if ele is not in main conjunto.
-            for ele in conjunto.elementos:
-                if ele not in self.elementos:
-                    # Insert in the new conjunto
-                    diff.inserir(ele)
-        return diff
+            for elemento in self.elementos:
+                if elemento not in conjunto.elementos:
+                    diferenca.inserir(elemento, True)
+        return diferenca
 
     def complementar(self, conjunto):
 
@@ -185,14 +212,22 @@ class Conjunto:
         """
         Retorna as combinações possíveis dos elementos de um conjunto.
 
-        - 
+        Exemplo:
+
+        - X = Conjunto("X", 5, 4)
+
+        - X.conjuntoDasPartes()
+
+        - Saída:
+        - - {}
+        - - {5}
+        - - {4}
+        - - {5, 4}
+
 
         """
 
         elementos = self.elementos
-
-        # combinacoes = sum([list(map(list, combinations(elementos, i)))
-        #                    for i in range(len(elementos) + 1)], [])
 
         for i in range(0, len(elementos)+1):
             linha = list(itertools.combinations(elementos, i))

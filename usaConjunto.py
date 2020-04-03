@@ -10,8 +10,8 @@ B = Conjunto("B", 4, 5, 6)
 
 # AIB.imprimir()
 
-X = Conjunto("X", 5, {1, 2}, 4, 3)
-Z = Conjunto("Z", 1, 4, {}, {1, 2})
+# X = Conjunto("X", 4, 5)
+# Z = Conjunto("Z", 5, 6)
 
 # Y = X.diferenca(Z)
 # Y.imprimir()
@@ -19,4 +19,6 @@ Z = Conjunto("Z", 1, 4, {}, {1, 2})
 # V = X.complementar(Z)
 # V.imprimir()
 
-X.conjuntoDasPartes()
+# X.diferenca(Z).imprimir()
+
+AUB = A.uniao(B).imprimir()
