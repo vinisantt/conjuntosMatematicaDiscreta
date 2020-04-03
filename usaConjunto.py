@@ -5,7 +5,7 @@ Conjunto = Conjuntos.Conjunto
 
 A = Conjunto("A", 1, 2, 3)
 B = Conjunto("B", 4, 5, 6)
-
+A.imprimir
 # AIB = A.intersecao(B)
 
 # AIB.imprimir()
@@ -20,4 +20,5 @@ B = Conjunto("B", 4, 5, 6)
 # V.imprimir()
 
 # X.diferenca(Z).imprimir()
-print((A.uniao(B)).elementos)
+c = (A.complementar(B))
+print(c.elementos)

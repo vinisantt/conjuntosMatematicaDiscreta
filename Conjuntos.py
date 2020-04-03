@@ -15,6 +15,23 @@ operacoes = {}  # Operações feitas são guardadas aqui, para motivos de otimiz
 
 class Conjunto:
     def __init__(self, nome, *elementos) -> object:
+        """
+        Cria um novo tipo de dados chamado conjunto
+
+        Parâmetros:
+
+        - (string) nome: Nome que será dado ao conjunto
+        - (string / int) *elementos: Um ou múltiplos elementos que serão inseridos no conjunto
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+
+        Saída:
+
+        - Conjunto("A", 1, 2, 3)
+
+        """
         self.nome = nome
         self.elementos = []
         for i in elementos:
@@ -22,6 +39,20 @@ class Conjunto:
                 self.elementos.append(i)
 
     def imprimir(self, operacao=False) -> str:
+        """
+        Imprime o conjunto chamador.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+
+        - A.imprimir()
+
+        Saída:
+
+        - A = {1,2,3}
+
+        """
         conjunto = self.nome + " = {"
         for elemento in self.elementos:
             if type(elemento) == str or type(elemento) == int:
@@ -55,6 +86,16 @@ class Conjunto:
         print(conjunto)
 
     def atualizaOperacoes(self, nome) -> None:
+        """
+        Atualiza o dicionário de operações, cache.
+
+        Parâmetros:
+        - (string) nome: Nome da operação que será adicionada.
+
+        Exemplo:
+
+        - conjunto.atualizaOperacoes("A U B")
+        """
         remove = []
         for operacao in operacoes:
             if nome in operacao:
@@ -64,6 +105,18 @@ class Conjunto:
             operacoes.pop(i)
 
     def inserir(self, elemento, operacao=False) -> None:
+        """
+        Insere determinado elemento no conjunto chamador.
+
+        Parâmetros:
+        - (String / int) elemento: Elemento que será inserido.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+
+        - A.inserir(4)
+        """
         if operacao == False:
             if elemento not in self.elementos:
                 self.elementos.append(elemento)
@@ -73,6 +126,20 @@ class Conjunto:
                 self.elementos.append(elemento)
 
     def tamanho(self) -> int:
+        """
+        Retorna o tamanho do conjunto.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+
+        - A.tamanho()
+
+        Saída:
+
+        - 3
+
+        """
         return len(self.elementos)
 
     def pertence(self, elemento) -> bool:
@@ -155,7 +222,7 @@ class Conjunto:
 
         - A.imprimirLatex()
 
-        Saída:
+        Saída em tela:
 
         - $A = \\\{1,2,3\\\}$
 
@@ -259,12 +326,12 @@ class Conjunto:
         except KeyError:
             return operacoes[uniao.nome[::-1]]
 
-    def intersecao(self, conjunto):
+    def intersecao(self, conjunto) -> object:
         """
         Une dois conjuntos, retornando um novo conjunto contendo os elementos de que fazem partes de ambos.
 
         Parâmetros:
-        - (Conjunto) conjunto: Os elementos deste conjunto serão unidos ao conjunto chamador.
+        - (Conjunto) conjunto: Conjunto que será usado na interseção com o conjunto chamador.
 
         Exemplo:
 
@@ -298,6 +365,9 @@ class Conjunto:
     def diferenca(self, conjunto) -> object:
         """
         Realiza a diferença entre dois conjuntos, retornando um novo conjunto com os elementos resultantes da diferença.
+        
+        Parâmetros:
+        - (Conjunto) conjunto: Conjunto que será usado na diferença com o conjunto chamador.
 
         Exemplo:
 
@@ -320,7 +390,25 @@ class Conjunto:
         return diferenca
 
     def complementar(self, conjunto) -> object:
-        
+        """
+        Retorna o conjunto complementar.
+
+        Parâmetros:
+        - (Conjunto) conjunto: Conjunto que será usado para complementar o conjunto chamador.
+
+        Exemplo:
+
+        - X = Conjunto("X", 4, 5)
+        - Y = Conjunto("Y", 5, 6)
+
+        - X.complementar(Y)
+
+        Saída:
+
+        - Conjunto("X ^ Y", { })
+
+        """
+
         if conjunto.contem(self):
             comp = self.diferenca(conjunto)
             comp.nome = f"{self.nome}^{conjunto.nome}"
@@ -338,7 +426,7 @@ class Conjunto:
 
         - X.conjuntoDasPartes()
 
-        - Saída:
+        - Saída em tela:
         - - {}
         - - {5}
         - - {4}
