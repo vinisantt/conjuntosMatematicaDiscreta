@@ -76,9 +76,44 @@ class Conjunto:
         return len(self.elementos)
 
     def pertence(self, elemento):
+        """
+        Checa se o elemento passado pertence ao conjunto chamador.
+
+        Parâmetros:
+        - (String / int) elemento: Elemento que será verificado.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+
+        - A.pertence(2)
+
+        Saída:
+
+        - True
+
+        """
         return elemento in self.elementos
 
     def contem(self, conjunto) -> bool:
+        """
+        Checa se o conjunto chamador contem tal conjunto.
+
+        Parâmetros:
+        - (Conjunto) conjunto: Conjunto que será usado junto ao conjunto chamador.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+        - B = Conjunto("B", 4, 5, 6)
+
+        - A.contemProp(B)
+
+        Saída:
+
+        - False
+
+        """
         if self.tamanho() < conjunto.tamanho():
             return False
         else:
@@ -88,11 +123,43 @@ class Conjunto:
             return True
 
     def contemProp(self, conjunto) -> bool:
+        """
+        Checa se o conjunto chamador contem propriamente tal conjunto.
+
+        Parâmetros:
+        - (Conjunto) conjunto: Conjunto que será usado junto ao conjunto chamador.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+        - B = Conjunto("B", 4, 5, 6)
+
+        - A.contemProp(B)
+
+        Saída:
+
+        - False
+
+        """
         if self.contem(conjunto):
             return self.tamanho() > conjunto.tamanho()
         return False
 
     def imprimirLatex(self):
+        """
+        Imprime em tela o conjunto em Latex.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+
+        - A.imprimirLatex()
+
+        Saída:
+
+        - $A = \\\{1,2,3\\\}$
+
+        """
         conjunto = self.imprimir(True)
         expressoes = {'{': '\\{', '}': '\\}'}
         formulaLatex = ''
@@ -105,9 +172,41 @@ class Conjunto:
         return formulaLatex
 
     def estaVazio(self):
+        """
+        Checa se o conjunto está vazio.
+
+        Exemplo:
+
+        - A = Conjunto("A")
+
+        - A.estaVazio()
+
+        Saída:
+
+        - True
+
+        """
         return self.tamanho() == 0
 
     def igual(self, conjunto):
+        """
+        Checa se um conjunto é igual ao outro.
+
+        Parâmetros:
+        - (Conjunto) conjunto: Conjunto que será comparado ao conjunto chamador.
+
+        Exemplo:
+
+        - A = Conjunto("A", 1, 2, 3)
+        - B = Conjunto("B", 4, 5, 6) 
+
+        - A.igual(B)
+
+        Saída:
+
+        - False
+
+        """
         if self.tamanho() == conjunto.tamanho():
             return self.contem(conjunto)
         return False
@@ -115,6 +214,9 @@ class Conjunto:
     def uniao(self, conjunto):
         """
         Une dois conjuntos, retornando um novo conjunto contendo os elementos de ambos.
+
+        Parâmetros:
+        - (Conjunto) conjunto: Os elementos deste conjunto serão unidos ao conjunto chamador.
 
         Exemplo:
 
@@ -174,7 +276,7 @@ class Conjunto:
             return operacoes[intersecao.nome]
         except KeyError:
             return operacoes[intersecao.nome[::-1]]
-
+    
     def diferenca(self, conjunto):
         """
         Realiza a diferença entre dois conjuntos, retornando um novo conjunto com os elementos resultantes da diferença.
@@ -200,7 +302,7 @@ class Conjunto:
         return diferenca
 
     def complementar(self, conjunto):
-
+        
         if conjunto.contem(self):
             comp = self.diferenca(conjunto)
             comp.nome = f"{self.nome}^{conjunto.nome}"

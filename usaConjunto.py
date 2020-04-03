@@ -20,5 +20,4 @@ B = Conjunto("B", 4, 5, 6)
 # V.imprimir()
 
 # X.diferenca(Z).imprimir()
-
-AUB = A.uniao(B).imprimir()
+print(A.pertence(2))
