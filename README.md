@@ -88,8 +88,8 @@ True
 Para verificar se um Conjunto é Subconjunto de outro Conjunto, deve chamar a função contem(), e passar como parâmetro um Conjunto ao qual deseja verificar se é um Subconjunto do Conjunto instanciado. Essa função retorna um boolean, se o Conjunto passado no parâmetro for Subconjunto do Conjunto instanciado, retornar true, caso contrário retorna false.
 ### Exemplo:
 ```
-A = Conjunto("A", 1, 2, 3, {2, 9})
-B = Conjunto("B", {2, 9})
+A = Conjunto("A", 1, 2, 3, (2, 9))
+B = Conjunto("B", (2, 9))
 A.contem(B)
 ```
 #### Retorno:
@@ -102,8 +102,8 @@ True
 Para verificar se um Conjunto  é Subconjunto próprio de outro, utilizamos a função contemProp, que recebe como parâmetro um Conjunto, que ao ser chamada verifica primeiramente se o Conjunto passado é um subconjunto do elemento que chamou a função utilizando a função contem(Conjunto), caso não seja já retorna False (falso), caso não verifica se o tamanho dos dois conjuntos são iguais, caso seja, retorna False (falso), caso não retorna True (verdadeiro, é um subconjunto próprio).
 ### Exemplo:
 ```
-A = Conjunto("A", 1, 2, 3, {2, 9})
-B = Conjunto("B", {2, 9})
+A = Conjunto("A", 1, 2, 3, (2, 9))
+B = Conjunto("B", (2, 9))
 A.contemProp(B)
 B.contemProp(A)
 ```
