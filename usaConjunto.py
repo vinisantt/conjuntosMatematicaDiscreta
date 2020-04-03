@@ -1,10 +1,13 @@
 #from pylatex import Document, Section
 import Conjuntos
+from Conjuntos import universo
 
 Conjunto = Conjuntos.Conjunto
 
 A = Conjunto("A", 1, 2, 3)
-B = Conjunto("B", 4, 5, 6)
+B = Conjunto("B", 4, 5, {6, 2}, {6, {7, 5}, 2})
+
+print(universo)
 
 # AIB = A.intersecao(B)
 
@@ -20,4 +23,3 @@ B = Conjunto("B", 4, 5, 6)
 # V.imprimir()
 
 # X.diferenca(Z).imprimir()
-print((A.uniao(B)).elementos)

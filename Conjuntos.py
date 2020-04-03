@@ -9,8 +9,7 @@ import itertools
 from itertools import combinations
 
 operacoes = {}  # Operações feitas são guardadas aqui, para motivos de otimização
-
-# Deixar a classe conjunto como model, e as funções na classe Deus
+universo = []
 
 
 class Conjunto:
@@ -20,6 +19,7 @@ class Conjunto:
         for i in elementos:
             if i not in self.elementos:
                 self.elementos.append(i)
+        # universo.extend(self.elementos)
 
     def imprimir(self, operacao=False) -> str:
         conjunto = self.nome + " = {"
@@ -294,7 +294,7 @@ class Conjunto:
             return operacoes[intersecao.nome]
         except KeyError:
             return operacoes[intersecao.nome[::-1]]
-    
+
     def diferenca(self, conjunto) -> object:
         """
         Realiza a diferença entre dois conjuntos, retornando um novo conjunto com os elementos resultantes da diferença.
@@ -320,7 +320,7 @@ class Conjunto:
         return diferenca
 
     def complementar(self, conjunto) -> object:
-        
+
         if conjunto.contem(self):
             comp = self.diferenca(conjunto)
             comp.nome = f"{self.nome}^{conjunto.nome}"
