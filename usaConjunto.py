@@ -4,10 +4,10 @@ from Conjuntos import universo
 
 Conjunto = Conjuntos.Conjunto
 
-A = Conjunto("A", 1, 2, 3)
-B = Conjunto("B", 4, 5, {6, 2}, {6, 2})
+A = Conjunto("A", 9, (7, 1, 2), 2, 3)
+B = Conjunto("B", 4, 5, (6, 2))
 
-A.complemento().imprimir()
+A.imprimir()
 
 # B = Conjunto("B", 4, 5, 6)
 # AIB = A.intersecao(B)
