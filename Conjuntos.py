@@ -14,7 +14,7 @@ operacoes = {}  # Operações feitas são guardadas aqui, para motivos de otimiz
 
 
 class Conjunto:
-    def __init__(self, nome, *elementos):
+    def __init__(self, nome, *elementos) -> object:
         self.nome = nome
         self.elementos = []
         for i in elementos:
@@ -54,7 +54,7 @@ class Conjunto:
             return conjunto
         print(conjunto)
 
-    def atualizaOperacoes(self, nome):
+    def atualizaOperacoes(self, nome) -> None:
         remove = []
         for operacao in operacoes:
             if nome in operacao:
@@ -63,7 +63,7 @@ class Conjunto:
         for i in remove:
             operacoes.pop(i)
 
-    def inserir(self, elemento, operacao=False):
+    def inserir(self, elemento, operacao=False) -> None:
         if operacao == False:
             if elemento not in self.elementos:
                 self.elementos.append(elemento)
@@ -75,7 +75,7 @@ class Conjunto:
     def tamanho(self) -> int:
         return len(self.elementos)
 
-    def pertence(self, elemento):
+    def pertence(self, elemento) -> bool:
         """
         Checa se o elemento passado pertence ao conjunto chamador.
 
@@ -145,7 +145,7 @@ class Conjunto:
             return self.tamanho() > conjunto.tamanho()
         return False
 
-    def imprimirLatex(self):
+    def imprimirLatex(self) -> None:
         """
         Imprime em tela o conjunto em Latex.
 
@@ -171,7 +171,7 @@ class Conjunto:
         print(f"${formulaLatex}$")
         return formulaLatex
 
-    def estaVazio(self):
+    def estaVazio(self) -> bool:
         """
         Checa se o conjunto está vazio.
 
@@ -188,7 +188,7 @@ class Conjunto:
         """
         return self.tamanho() == 0
 
-    def igual(self, conjunto):
+    def igual(self, conjunto) -> bool:
         """
         Checa se um conjunto é igual ao outro.
 
@@ -211,7 +211,7 @@ class Conjunto:
             return self.contem(conjunto)
         return False
 
-    def uniao(self, conjunto):
+    def uniao(self, conjunto) -> object:
         """
         Une dois conjuntos, retornando um novo conjunto contendo os elementos de ambos.
 
@@ -295,7 +295,7 @@ class Conjunto:
         except KeyError:
             return operacoes[intersecao.nome[::-1]]
     
-    def diferenca(self, conjunto):
+    def diferenca(self, conjunto) -> object:
         """
         Realiza a diferença entre dois conjuntos, retornando um novo conjunto com os elementos resultantes da diferença.
 
@@ -319,7 +319,7 @@ class Conjunto:
                     diferenca.inserir(elemento, True)
         return diferenca
 
-    def complementar(self, conjunto):
+    def complementar(self, conjunto) -> object:
         
         if conjunto.contem(self):
             comp = self.diferenca(conjunto)
@@ -328,7 +328,7 @@ class Conjunto:
         else:
             return Conjunto(f"{self.nome}^{conjunto.nome}")
 
-    def conjuntoDasPartes(self):
+    def conjuntoDasPartes(self) -> None:
         """
         Retorna as combinações possíveis dos elementos de um conjunto.
 

@@ -20,4 +20,4 @@ B = Conjunto("B", 4, 5, 6)
 # V.imprimir()
 
 # X.diferenca(Z).imprimir()
-print(A.pertence(2))
+print((A.uniao(B)).elementos)
