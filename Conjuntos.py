@@ -260,6 +260,24 @@ class Conjunto:
             return operacoes[uniao.nome[::-1]]
 
     def intersecao(self, conjunto):
+        """
+        Une dois conjuntos, retornando um novo conjunto contendo os elementos de que fazem partes de ambos.
+
+        Parâmetros:
+        - (Conjunto) conjunto: Os elementos deste conjunto serão unidos ao conjunto chamador.
+
+        Exemplo:
+
+        - A = Conjunto("A", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+        - B = Conjunto("B", 0, 2, 4, 6, ...) 
+
+        - A.intersecao(B)
+
+        Saída:
+
+        - Conjunto("A ^ B", 0, 2, 4, 6, 8)
+
+        """
         intersecao = Conjunto(f"{self.nome} ∩ {conjunto.nome}")
 
         if self.igual(conjunto):
