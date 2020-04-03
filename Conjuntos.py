@@ -1,15 +1,8 @@
-# Criar listinha de conjuntos // classe que controla tudo que vai acontecer
-# Ex: superClass para controlar quem faz o que, um gerente
-# class superClass:
-#   criarConjunto()
-#   listaDeConjuntos = []
-#   operacoesFeitas = {}
-
 import itertools
 from itertools import combinations
 
 operacoes = {}  # Operações feitas são guardadas aqui, para motivos de otimização
-universo = []
+universo = []   # Conjunto que contém todos os elementos já criados
 
 
 class Conjunto:
@@ -172,14 +165,15 @@ class Conjunto:
 
         Exemplo:
 
-        - A = Conjunto("A", 1, 2, 3)
-        - B = Conjunto("B", 4, 5, 6)
+        - A = Conjunto("A", 1, 2, 3, (2, 9))
+        - B = Conjunto("B", (2, 9))
 
-        - A.contemProp(B)
+
+        - A.contem(B)
 
         Saída:
 
-        - False
+        - True
 
         """
         if self.tamanho() < conjunto.tamanho():
@@ -199,13 +193,17 @@ class Conjunto:
 
         Exemplo:
 
-        - A = Conjunto("A", 1, 2, 3)
-        - B = Conjunto("B", 4, 5, 6)
+        - A = Conjunto("A", 1, 2, 3, (2, 9))
+
+        - B = Conjunto("B", (2, 9))
+
 
         - A.contemProp(B)
+        - A.contemProp(A)
 
         Saída:
 
+        - True
         - False
 
         """
@@ -329,7 +327,7 @@ class Conjunto:
 
     def intersecao(self, conjunto) -> object:
         """
-        Une dois conjuntos, retornando um novo conjunto contendo os elementos de que fazem partes de ambos.
+        Retorna um novo conjunto contendo os elementos de que fazem partes de ambos.
 
         Parâmetros:
         - (Conjunto) conjunto: Conjunto que será usado na interseção com o conjunto chamador.
@@ -384,11 +382,17 @@ class Conjunto:
         """
 
         diferenca = Conjunto(f"{self.nome} - {conjunto.nome}")
-        if(self.tamanho() > 0 and conjunto.tamanho() > 0):
-            for elemento in self.elementos:
-                if elemento not in conjunto.elementos:
-                    diferenca.inserir(elemento, True)
-        return diferenca
+
+        if diferenca.nome not in operacoes:
+            if self.estaVazio() == False and conjunto.estaVazio() == False:
+                for elemento in self.elementos:
+                    if elemento not in conjunto.elementos:
+                        diferenca.inserir(elemento, True)
+                operacoes[f"{diferenca.nome}"] = diferenca
+        try:
+            return operacoes[diferenca.nome]
+        except KeyError:
+            return {}
 
     def complemento(self) -> object:
         """

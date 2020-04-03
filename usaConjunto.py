@@ -1,13 +1,14 @@
-#from pylatex import Document, Section
+# from pylatex import Document, Section
 import Conjuntos
-from Conjuntos import universo
+from Conjuntos import operacoes
 
 Conjunto = Conjuntos.Conjunto
 
-A = Conjunto("A", 9, (7, 1, 2), 2, 3)
-B = Conjunto("B", 4, 5, (6, 2))
+A = Conjunto("A", 1, 2, (2, 9))
+B = Conjunto("B", (2, 9))
 
-A.imprimir()
+print(A.contemProp(B))
+
 
 # B = Conjunto("B", 4, 5, 6)
 # AIB = A.intersecao(B)
