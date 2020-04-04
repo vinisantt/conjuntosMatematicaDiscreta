@@ -1,5 +1,4 @@
 import itertools
-from itertools import combinations
 
 operacoes = {}  # Operações feitas são guardadas aqui, para motivos de otimização
 universo = []   # Conjunto que contém todos os elementos já criados
