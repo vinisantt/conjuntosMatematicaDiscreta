@@ -62,7 +62,7 @@ Para obtermos o tamanho de conjunto basta chamar a função tamanho, ela não re
 ### Exemplo: 
 ```
 A = Conjunto(“A”, 3, 4, 5)
-A.tamanho()
+A.tamanho().imprimir()
 ```
 #### Retorno:
 ```
@@ -74,7 +74,7 @@ Para verificarmos se um elemento pertence à outro precisamos utilizar a funçã
 ### Exemplo:
 ```
 A = Conjunto(“A”, 3, 4, 5)
-A.pertence(5)
+print(A.pertence(5))
 ```
 #### Retorno:
 ```
@@ -87,7 +87,7 @@ Para verificar se um Conjunto é Subconjunto de outro Conjunto, deve chamar a fu
 ```
 A = Conjunto("A", 1, 2, 3, (2, 9))
 B = Conjunto("B", (2, 9))
-A.contem(B)
+print(A.contem(B))
 ```
 #### Retorno:
 ```
@@ -101,8 +101,8 @@ Para verificar se um Conjunto  é Subconjunto próprio de outro, utilizamos a fu
 ```
 A = Conjunto("A", 1, 2, 3, (2, 9))
 B = Conjunto("B", (2, 9))
-A.contemProp(B)
-B.contemProp(A)
+print(A.contemProp(B))
+print(B.contemProp(A))
 ```
 #### Retorno: 
 ```
@@ -135,7 +135,7 @@ Caso a operação nunca tenha sido realizada e nenhum dos Conjuntos estejam vazi
 ```
 A = Conjunto("A", 1, 2, 3, (2, 9))
 B = Conjunto("B", (2, 9))
-A.intersecao(B)
+A.intersecao(B).imprimir()
 ```
 ### Retorno:
 ```
@@ -148,7 +148,7 @@ Para obter o complemento de um conjunto utilizamos a função complemento(), ela
 ```
 A = Conjunto("A", 1, 2, 3, (2, 9))
 B = Conjunto("B", 1, 2, 9, 4, (6, 2))
-A.complemento()
+A.complemento().imprimir()
 ```
 ### Retorno: 
 ```
