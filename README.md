@@ -19,10 +19,7 @@
 ```
 git clone https://github.com/vinisantt/ConjuntosMatematicaDiscreta.git
 ```
-- Instalar a biblioteca pylatex:
-```
-pip install pylatex
-```
+
 
 # Exemplos de utilização:
 Para usar a API, abra o arquivo `usaConjunto.py` em um editor de código de sua preferencia.
